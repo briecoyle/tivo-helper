@@ -3,13 +3,13 @@ class Network
   @@all = []
 
   def initialize
-    @songs = []
+    @shows = []
     @@all << self
   end
 
   def self.create(name)
     @name = name
-    @songs = []
+    @shows = []
     @@all << self
   end
 

@@ -1,15 +1,17 @@
+require 'pry'
+
 class Genre
   attr_accessor :name, :shows
   @@all = []
 
   def initialize
-    @songs = []
+    @shows = []
     @@all << self
   end
 
   def self.create(name)
     @name = name
-    @songs = []
+    @shows = []
     @@all << self
   end
 
@@ -22,7 +24,11 @@ class Genre
   end
 
   def self.find_or_create_by_name(name)
-    self.find_by_name(name) == nil ? self.create(name) : self.find_by_name(name)
+    this_genre = self.find_by_name(name)
+    if !this_genre
+       this_genre = self.create(name)
+     end
+     this_genre
   end
 
   def add_show(show)

@@ -5,6 +5,8 @@ require_relative './network.rb'
 class Show
   attr_accessor :name, :genre, :network, :time
   @@all = []
+  @@genres = []
+  @@networks = []
 
   def initialize
     @@all << self
@@ -28,7 +30,6 @@ class Show
       new_show.genre = Genre.find_or_create_by_name(this_genre)
       new_show.time = this_time
       new_show.network = Network.find_or_create_by_name(this_network || "Netflix")
-      binding.pry
     end
     binding.pry
   end
@@ -42,11 +43,11 @@ class Show
   end
 
   def self.sort_by_genre
-
+    genres = self.all.collect {|show| show.genre}.uniq
   end
 
   def self.sort_by_network
-
+    networks = self.all.collect {|show| show.network}.uniq
   end
 
   # def network=(network)
