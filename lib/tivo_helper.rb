@@ -1,20 +1,11 @@
-module TivoHelper
-end
-
 require 'open-uri'
-require 'nokogiri'
 require 'pry'
+require 'nokogiri'
 
-require_all "tivo_helper"
+require_relative "tivo_helper/version"
+require_relative "tivo_helper/cli"
+require_relative "tivo_helper/show"
+require_relative "tivo_helper/scraper"
 
-module Concerns
-  module Findable
-    def find_by_name(name)
-      self.all.find {|s| s.name == name}
-    end
-
-    def find_or_create_by_name(name)
-      self.find_by_name(name) == nil ? self.create(name) : self.find_by_name(name)
-    end
-  end
+module TivoHelper
 end

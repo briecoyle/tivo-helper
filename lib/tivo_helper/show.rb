@@ -1,8 +1,5 @@
 require_relative './scraper.rb'
-require_relative './genre.rb'
-require_relative './network.rb'
-
-class Show
+class TivoHelper::Show
   attr_accessor :name, :genre, :network, :time
   @@all = []
   @@genres = []
@@ -25,11 +22,11 @@ class Show
       else
         this_network = listing.css("td:last-of-type img").attribute("alt").value
       end
-      new_show = Show.new
+      new_show = TivoHelper::Show.new
       new_show.name = this_name
-      new_show.genre = Genre.find_or_create_by_name(this_genre)
+      new_show.genre = this_genre
       new_show.time = this_time
-      new_show.network = Network.find_or_create_by_name(this_network || "Netflix")
+      new_show.network = (this_network || "Netflix")
     end
     binding.pry
   end
@@ -38,35 +35,51 @@ class Show
     @@all
   end
 
+  def self.genres
+    @@genres.uniq!
+  end
+
+  def self.networks
+    @@networks.uniq!
+  end
+
   def self.sort_by_time
-    @@all
+    self.all
+  end
+
+  def find_by_name(name)
+    self.all.detect {|show| show.name == name}
+  end
+
+  def self.find_all_by_genre(genre)
+    self.all.find_all {|show| show.genre == genre}
+  end
+
+  def self.find_all_by_network(network)
+    self.all.find_all {|show| show.network == network}
   end
 
   def self.sort_by_genre
-    genres = self.all.collect {|show| show.genre}.uniq
+    self.genres.each do |genre|
+      self.find_all_by_genre(genre)
+    end
   end
 
   def self.sort_by_network
-    networks = self.all.collect {|show| show.network}.uniq
+    self.networks.each do |genre|
+      self.find_all_by_genre(genre)
+    end
   end
 
-  # def network=(network)
-  #   @network = network
-  #   network.add_show(self)
-  # end
-  #
-  # def genre=(genre)
-  #   @genre = genre
-  #   genre.add_show(self)
-  # end
-
-  def find_by_name(name)
-    self.all.find {|s| s.name == name}
+  def genre=(genre)
+    @genre = genre
+    @@genres << genre
   end
 
-  def find_or_create_by_name(name)
-    self.find_by_name(name) == nil ? self.create(name) : self.find_by_name(name)
+  def network=(network)
+    @network = network
+    @@networks << network
   end
 end
 
-Show.create_from_scraper(Scraper.new.scrape_page)
+TivoHelper::Scraper.new.make_shows

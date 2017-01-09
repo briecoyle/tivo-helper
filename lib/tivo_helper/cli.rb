@@ -1,6 +1,7 @@
 class TivoHelper::CLI
 
   def call
+    TivoHelper::Scraper.new.make_shows
     puts "Upcoming Tivo Premieres:"
     list_shows
     menu
