@@ -4,10 +4,21 @@ class TivoHelper::Show
 
   def self.all
     #@@all
-    puts <<-DOC
-    1. Coin Heist - Thriller - Netflix
-    2. Emerald City - Drama - NBC, 9p
-    3. Ginormous Food - Reality - Food, 8p
-    DOC
+    show_1 = self.new
+    show_1.title = "Coin Heist"
+    show_1.genre = "Thriller"
+    show_1.network = "Netflix"
+
+    show_2 = self.new
+    show_2.title = "Emerald City"
+    show_2.genre = "Drama"
+    show_2.network = "NBC"
+
+    show_3 = self.new
+    show_3.title = "Ginormous Food"
+    show_3.genre = "Reality"
+    show_3.network = "Netflix"
+
+    [show_1, show_2, show_3]
   end
 end
