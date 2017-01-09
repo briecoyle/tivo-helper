@@ -1,8 +1,8 @@
-require 'pry'
-require 'nokogiri'
 require 'open-uri'
+require 'nokogiri'
+require 'pry'
 
-class TivoHelper::Scraper
+class Scraper
   def load_page
     html = open("http://www.metacritic.com/feature/tv-premiere-dates", "User-Agent" => "Brie Coyle")
     Nokogiri::HTML(html)
@@ -10,8 +10,7 @@ class TivoHelper::Scraper
 
   def scrape_page
     premiere_page = self.load_page
-    try = premiere_page.css("table")
-    binding.pry
+    premiere_page.css(".even")
   end
 end
 

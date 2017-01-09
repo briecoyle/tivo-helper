@@ -2,12 +2,16 @@ require 'open-uri'
 require 'nokogiri'
 require 'pry'
 
-require_relative "../lib/tivo_helper/scraper"
-require_relative "../lib/tivo_helper/show"
-require_relative "../lib/tivo_helper/genre"
-require_relative "../lib/tivo_helper/network"
-require_relative "../lib/tivo_helper/cli"
-require_relative "../lib/tivo_helper/version"
+require_relative '../lib/tivo_helper/scraper'
+require_relative '../lib/tivo_helper/show'
+require_relative '../lib/tivo_helper/genre'
+require_relative '../lib/tivo_helper/network'
+require_relative '../lib/tivo_helper/cli'
+require_relative ',,/lib/tivo_helper/version'
+
+end
+
+end
 
 module Concerns
   module Findable
