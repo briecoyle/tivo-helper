@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/tivo_helper'
+
+TivoHelper::CLI.new.call

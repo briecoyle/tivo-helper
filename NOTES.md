@@ -21,3 +21,8 @@ by date:
 1. Coin Heist - Thriller - Netflix
 2. Emerald City - Drama - NBC, 9p
 3. Ginormous Food - Reality - Food, 8p
+
+What is a show?
+A show has a title
+A show has a genre
+A show has a network

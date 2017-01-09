@@ -1,5 +1,2 @@
-require "tivo_helper/version"
-
-module TivoHelper
-  # Your code goes here...
-end
+require_relative "tivo_helper/version"
+require_relative "tivo_helper/cli"
