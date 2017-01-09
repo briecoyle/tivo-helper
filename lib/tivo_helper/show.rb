@@ -1,4 +1,5 @@
 class TivoHelper::Show
+  extend Concerns::Findable
   attr_accessor :title, :genre, :network
   @@all = []
 
