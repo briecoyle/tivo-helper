@@ -17,14 +17,16 @@ class TivoHelper::CLI
     input = nil
     while input != "exit"
       input = gets.chomp.downcase
-      case input
-      when "1"
+      if input == "1"
         puts "TV Premieres Listed by Time:"
-      when "2"
+        puts "#{TivoHelper::Show.sort_by_time}"
+      elsif input == "2"
         puts "TV Premieres Listed by Genre:"
-      when "3"
+        puts "#{TivoHelper::Show.sort_by_genre}"
+      elsif input == "3"
         puts "TV Premieres Listed by Network:"
-      when "help"
+        puts "#{TivoHelper::Show.sort_by_network}"
+      elsif input == "help"
         help
       else
         puts "I don't recognize that input. Type help for your options."

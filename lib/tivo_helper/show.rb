@@ -21,4 +21,16 @@ class TivoHelper::Show
 
     [show_1, show_2, show_3]
   end
+
+  def self.sort_by_time
+    @@all
+  end
+
+  def self.sort_by_genre
+
+  end
+
+  def self.sort_by_network
+
+  end
 end
