@@ -1,7 +1,3 @@
-require_relative './show.rb'
-require 'nokogiri'
-require 'open-uri'
-
 class TivoHelper::Scraper
   def load_page
     html = open("http://www.metacritic.com/feature/tv-premiere-dates", "User-Agent" => "Brie Coyle")
@@ -9,8 +5,7 @@ class TivoHelper::Scraper
   end
 
   def scrape_page
-    premiere_page = self.load_page
-    premiere_page.css(".even")
+    self.load_page.css(".even")
   end
 
   def make_shows
@@ -19,5 +14,3 @@ class TivoHelper::Scraper
     end
   end
 end
-
-TivoHelper::Scraper.new.make_shows
