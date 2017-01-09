@@ -25,10 +25,12 @@ class Show
       end
       new_show = Show.new
       new_show.name = this_name
-      new_show.genre = this_genre
+      new_show.genre = Genre.find_or_create_by_name(this_genre)
       new_show.time = this_time
-      new_show.network = (this_network || "Netflix")
+      new_show.network = Network.find_or_create_by_name(this_network || "Netflix")
+      binding.pry
     end
+    binding.pry
   end
 
   def self.all
