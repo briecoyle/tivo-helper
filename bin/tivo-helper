@@ -1,10 +1,5 @@
 #!/usr/bin/env ruby
 
-require "pry"
-require "nokogiri"
-require "open-uri"
-
 require_relative '../lib/tivo_helper'
-
 
 TivoHelper::CLI.new.call
