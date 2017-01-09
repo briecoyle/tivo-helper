@@ -8,7 +8,10 @@ class TivoHelper::CLI
   end
 
   def list_shows
-    TivoHelper::Show.all
+    shows = TivoHelper::Show.all
+    shows.each.with_index(1) do |show, i|
+      puts "#{i}. #{show.name} - #{show.genre} - #{show.network}"
+    end
   end
 
   def menu
