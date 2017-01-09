@@ -26,6 +26,7 @@ class TivoHelper::Show
         new_show.genre = this_genre
         new_show.time = this_time
         new_show.network = this_network || "Netflix"
+        binding.pry
       end
     end
   end
@@ -56,3 +57,5 @@ class TivoHelper::Show
     genre.add_show(self)
   end
 end
+
+TivoHelper::Show.create_from_scraper(TivoHelper::Scraper.new.scrape_page)
