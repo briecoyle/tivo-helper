@@ -32,11 +32,11 @@ class TivoHelper::Show
   end
 
   def self.genres
-    @@genres.uniq!
+    @@genres.uniq
   end
 
   def self.networks
-    @@networks.uniq!
+    @@networks.uniq
   end
 
   def self.sort_by_time
