@@ -10,16 +10,11 @@ Gem::Specification.new do |spec|
   spec.email         = ["brie.coyle@gmail.com"]
 
   spec.summary       = "This CLI app will provide you with the list up upcoming television premieres for maximum DVR efficiency. Information about upcoming shows is taken from Metacritic's permanent calendar."
-  spec.homepage      = "https://github.com/briecoyle/tivo-helper-cli-gem"
+  spec.homepage      = "https://rubygems.org/gems/tivo_helper"
   spec.license       = "MIT"
-
-
-
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files         = "lib/tivo_helper/cli.rb", "lib/tivo_helper/scraper.rb", "lib/tivo_helper/show.rb", "tivo_helper.rb"
   spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   << "tivo-helper"
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.13"
