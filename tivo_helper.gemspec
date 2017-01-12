@@ -9,11 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Brie Coyle"]
   spec.email         = ["brie.coyle@gmail.com"]
 
-  spec.summary       = "This CLI app will provide you with the list up upcoming television premieres for maximum DVR efficiency. Information about upcoming shows is taken from Metacritic's permanent calendar."
+  spec.summary       = "TV Premiere Scraper"
+  spec.description   = "This CLI app will provide you with the list up upcoming television premieres for maximum DVR efficiency. Information about upcoming shows is taken from Metacritic's permanent calendar."
   spec.homepage      = "https://rubygems.org/gems/tivo_helper"
   spec.license       = "MIT"
-  spec.files         = "lib/tivo_helper/cli.rb", "lib/tivo_helper/scraper.rb", "lib/tivo_helper/show.rb", "tivo_helper.rb"
-  spec.bindir        = "exe"
+  spec.files         = ["lib/tivo_helper/cli.rb", "lib/tivo_helper/scraper.rb", "lib/tivo_helper/show.rb"]
   spec.executables   << "tivo-helper"
   spec.require_paths = ["lib"]
 
