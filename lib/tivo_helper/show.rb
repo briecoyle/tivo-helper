@@ -4,27 +4,28 @@ class TivoHelper::Show
   @@genres = []
   @@networks = []
 
-  def initialize
+  def initialize(attributes)
+    attributes.each {|key, value| self.send(("#{key}="), value)}
     @@all << self
   end
 
 #This works! Leave it alone!
-  def self.create_from_scraper(listing)
-    this_name = listing.css(".title").text.strip
-    this_genre = listing.css(".title + td").text.strip
-    this_time = listing.css("td:last-of-type").text.strip
-    if !this_time.match(/^\d/) && this_time
-      modified_time = this_time.split(", ")
-      this_time = modified_time[1]
-      this_network = modified_time[0]
-    else
-      this_network = listing.css("td:last-of-type img").attribute("alt").value
-    end
+  def self.create_from_scraper(show_hash)
+#    this_name = listing.css(".title").text.strip
+#    this_genre = listing.css(".title + td").text.strip
+#    this_time = listing.css("td:last-of-type").text.strip
+#    if !this_time.match(/^\d/) && this_time
+    #   modified_time = this_time.split(", ")
+    #   this_time = modified_time[1]
+    #   this_network = modified_time[0]
+    # else
+    #   this_network = listing.css("td:last-of-type img").attribute("alt").value
+    # end
     new_show = TivoHelper::Show.new
-    new_show.name = this_name
-    new_show.genre = this_genre
-    new_show.time = this_time
-    new_show.network = (this_network || "Netflix")
+    new_show.name = show_hash[:name]
+    new_show.genre = show_hash[:genre]
+    new_show.time = show_hash[:time]
+    new_show.network = (show_hash[:network] || "Netflix")
   end
 
   def self.all

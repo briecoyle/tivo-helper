@@ -10,7 +10,17 @@ class TivoHelper::Scraper
 
   def make_shows
     scrape_page.each do |show_info|
-      TivoHelper::Show.create_from_scraper(show_info)
+      name = show_info.css(".title").text.strip
+      genre = show_info.css(".title + td").text.strip
+      time = show_info.css("td:last-of-type").text.strip
+      if !time.match(/^\d/) && time
+        modified_time = time.split(", ")
+        time = modified_time[1]
+        network = modified_time[0]
+      else
+        network = show_info.css("td:last-of-type img").attribute("alt").value
+      end
+      TivoHelper::Show.new({name: name, genre: genre, time: time, network: network})
     end
   end
 end
