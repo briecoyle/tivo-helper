@@ -20,7 +20,7 @@ class TivoHelper::Scraper
       else
         network = show_info.css("td:last-of-type img").attribute("alt").value
       end
-      TivoHelper::Show.new({name: name, genre: genre, time: time, network: network})
+      TivoHelper::Show.new({name: name, genre: genre, time: time, network: network || "Netflix"})
     end
   end
 end
